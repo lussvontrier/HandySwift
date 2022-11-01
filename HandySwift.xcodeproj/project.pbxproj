@@ -10,6 +10,8 @@
 		060821A02901C842008077B0 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608219F2901C842008077B0 /* UnderlineSegmentedControl.swift */; };
 		060821A22901C901008077B0 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821A12901C901008077B0 /* ViewFactory.swift */; };
 		060821A429033BB4008077B0 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821A329033BB4008077B0 /* GradientButton.swift */; };
+		060821AA290DD03C008077B0 /* CATransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821A9290DD03C008077B0 /* CATransactionExtension.swift */; };
+		060821AC2911C393008077B0 /* UnderlineSegmentedControlOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821AB2911C393008077B0 /* UnderlineSegmentedControlOptions.swift */; };
 		0625A24E286F6DD60079B20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A24D286F6DD60079B20C /* AppDelegate.swift */; };
 		0625A250286F6DD60079B20C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A24F286F6DD60079B20C /* SceneDelegate.swift */; };
 		0625A252286F6DD60079B20C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A251286F6DD60079B20C /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		0608219F2901C842008077B0 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		060821A12901C901008077B0 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		060821A329033BB4008077B0 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		060821A9290DD03C008077B0 /* CATransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATransactionExtension.swift; sourceTree = "<group>"; };
+		060821AB2911C393008077B0 /* UnderlineSegmentedControlOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControlOptions.swift; sourceTree = "<group>"; };
 		0625A24A286F6DD60079B20C /* HandySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0625A24D286F6DD60079B20C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0625A24F286F6DD60079B20C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,11 +60,21 @@
 		0608219E2901C829008077B0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				0608219F2901C842008077B0 /* UnderlineSegmentedControl.swift */,
+				060821A8290DD00C008077B0 /* SegmentedControl */,
 				060821A12901C901008077B0 /* ViewFactory.swift */,
-				060821A329033BB4008077B0 /* GradientButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		060821A8290DD00C008077B0 /* SegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0608219F2901C842008077B0 /* UnderlineSegmentedControl.swift */,
+				060821A329033BB4008077B0 /* GradientButton.swift */,
+				060821A9290DD03C008077B0 /* CATransactionExtension.swift */,
+				060821AB2911C393008077B0 /* UnderlineSegmentedControlOptions.swift */,
+			);
+			path = SegmentedControl;
 			sourceTree = "<group>";
 		};
 		0625A241286F6DD60079B20C = {
@@ -194,8 +208,10 @@
 				0625A24E286F6DD60079B20C /* AppDelegate.swift in Sources */,
 				0625A250286F6DD60079B20C /* SceneDelegate.swift in Sources */,
 				0625A2652874CFB90079B20C /* CollectionView+HandySwift.swift in Sources */,
+				060821AC2911C393008077B0 /* UnderlineSegmentedControlOptions.swift in Sources */,
 				060821A22901C901008077B0 /* ViewFactory.swift in Sources */,
 				0625A26C2874F4700079B20C /* Optional+HandySwift.swift in Sources */,
+				060821AA290DD03C008077B0 /* CATransactionExtension.swift in Sources */,
 				0625A2672874F2910079B20C /* UserDefaults+HandySwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,13 +20,17 @@ class GradientButton: UIButton {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         
         gradientLayer.colors = [
+            UIColor.red.cgColor,
+            UIColor.blue.cgColor,
             UIColor.blue.cgColor,
             UIColor.red.cgColor
         ]
             
         gradientLayer.locations = [
-            1.0,
-            0.1
+            0.0,
+            0.0,
+            0.0,
+            0.0
         ] as [NSNumber]
         
         return gradientLayer
@@ -74,30 +78,32 @@ class GradientButton: UIButton {
         bringSubviewToFront(view)
     }
     
-    func animate(forward: Bool, selected: Bool) {
-
-        if selected {
-            animation.fromValue = [0.0, 0.0]
-            animation.toValue = [1.0, 1.0]
-        } else {
-            animation.fromValue = [1.0, 1.0]
-            animation.toValue = [0.0, 0.0]
-        }
-        
-        if forward {
-            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        } else {
-            gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
-        }
-        
-        gradientLayer.removeAnimation(forKey: "anim")
-        gradientLayer.add(animation, forKey: "anim")
-    }
+//    func animate(forward: Bool, selected: Bool) {
+//
+//        if selected {
+//            animation.fromValue = [0.0, 0.0]
+//            animation.toValue = [1.0, 1.0]
+//        } else {
+//            animation.fromValue = [1.0, 1.0]
+//            animation.toValue = [0.0, 0.0]
+//        }
+//
+//        if forward {
+//            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+//            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//        } else {
+//            gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
+//            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
+//        }
+//
+//        gradientLayer.removeAnimation(forKey: "anim")
+//        gradientLayer.add(animation, forKey: "anim")
+//    }
     
     func setGradientLevelLocations(locations: [NSNumber]) {
-        self.gradientLayer.locations = locations
+        CATransaction.disableAnimations {
+            self.gradientLayer.locations = locations
+        }
     }
     
     func setGradientColors(colors: [CGColor]) {

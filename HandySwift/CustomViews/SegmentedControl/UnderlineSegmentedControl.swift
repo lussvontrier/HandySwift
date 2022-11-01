@@ -7,21 +7,12 @@
 
 import UIKit
 
-//TODO: fix
-struct UnderlineSegmentedControlOptions {
-    let segmentTitleInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
-    let segmentTitleFont = UIFont.systemFont(ofSize: 20)
-    let segmentTitleColor = UIColor.lightGray
-    let selectedSegmentTitleColor = UIColor.red
-    let underlineColor = UIColor.blue
-}
-
 class UnderlineSegmentedControl: UIControl {
     
     private var segments: [String]
     private var segmentButtons: [GradientButton] = []
     private var options: UnderlineSegmentedControlOptions
-    
+        
     ///Omitted by .valueChanged action the target is subscribed to. Changed when a new segment is tapped.
     private(set) var selectedSegmentIndex: Int = 0
     
@@ -39,7 +30,6 @@ class UnderlineSegmentedControl: UIControl {
         self.segments = segments
         self.options = options
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         configureSegmentButtons(with: segments)
     }
     
@@ -60,22 +50,20 @@ class UnderlineSegmentedControl: UIControl {
             let segment = GradientButton()
             var configuration = GradientButton.Configuration.filled()
             configuration.contentInsets = options.segmentTitleInsets
-            configuration.baseBackgroundColor = UIColor.white
+            configuration.baseBackgroundColor = options.segmentBackgroundColor
             
             var container = AttributeContainer()
-            container.font = UIFont.boldSystemFont(ofSize: 20)
+            container.font = options.segmentTitleFont
             container.foregroundColor = options.segmentTitleColor
             configuration.attributedTitle = AttributedString(segmentTitle, attributes: container)
             segment.configuration = configuration
             
-            segment.setGradientLevelLocations(locations: [0.0, 0.0])
+            segment.setGradientLevelLocations(locations: [0.0, 0.0, 0.0, 0.0])
 
             segment.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
             self.segmentButtons.append(segment)
         }
-        segmentButtons[selectedSegmentIndex].setGradientLevelLocations(locations: [1.0, 1.0])
-
-//        segmentButtons[selectedSegmentIndex].configuration?.attributedTitle?.foregroundColor = options.selectedSegmentTitleColor
+        segmentButtons[selectedSegmentIndex].setGradientLevelLocations(locations: [0.0, 0.0, 1.0, 1.0])
     }
     
     private func setupUI() {
@@ -96,58 +84,52 @@ class UnderlineSegmentedControl: UIControl {
 
         addSubview(underlineSelector)
         let selectorWidth = self.frame.width / CGFloat(self.segments.count)
-        underlineSelector.frame = CGRect(x: segmentButtons[selectedSegmentIndex].frame.origin.x, y: self.frame.height - 4, width: selectorWidth, height: 4)
+        underlineSelector.frame = CGRect(x: segmentButtons[selectedSegmentIndex].frame.origin.x, y: self.frame.height - options.underlineHeight, width: selectorWidth, height: options.underlineHeight)
     }
     
     @objc private func buttonTapped(sender: UIButton) {
         for (index, segment) in segmentButtons.enumerated() {
             if segment == sender && selectedSegmentIndex != index {
-//                if index > selectedSegmentIndex {
-//                    segment.animate(forward: true, selected: true)
-//                    segmentButtons[selectedSegmentIndex].animate(forward: false, selected: false)
-//                } else if index < selectedSegmentIndex {
-//                    segment.animate(forward: false, selected: true)
-//                    segmentButtons[selectedSegmentIndex].animate(forward: true, selected: false)
-//                }
-
-//               segmentButtons[selectedSegmentIndex].configuration?.attributedTitle?.foregroundColor = options.segmentTitleColor
                 self.selectedSegmentIndex = index
-//                segment.configuration?.attributedTitle?.foregroundColor = options.selectedSegmentTitleColor
                 sendActions(for: .valueChanged)
-//                UIView.animate(withDuration: 3.0) {
-//                    self.underlineSelector.frame.origin.x = segment.frame.origin.x
-//                }
             }
         }
     }
     
-    ///Call from connected scrollview's scrollViewDidScroll method to continuously update underline's x position
-    ///- parameter xPosition: scrollView.contentOffset.x
-    func updateUnderline(with xPosition: CGFloat) {
+    private func updateUnderline(with xPosition: CGFloat) {
         underlineSelector.frame.origin.x = xPosition / CGFloat(segments.count)
     }
-    
-    func updateGradientLocations(with xPosition: CGFloat, frameWidth: CGFloat) {
-        var percent = (xPosition / frameWidth)
-        while percent > 1 {
-            percent -= 1
-        }
-        let location = NSNumber(value: Float(percent))
-        let toSelect = Int(percent)+1
-        if toSelect < segmentButtons.count {
-            segmentButtons[toSelect].setGradientLevelLocations(locations: [location, location])
-
-        }
         
+    private func updateGradientLocations(with xPosition: CGFloat, frameWidth: CGFloat) {
+
+        ///Adding 1 so we don't have to deal with negative numbers
+        let ratio = 1 + (xPosition / frameWidth)
+        let percent = ratio.truncatingRemainder(dividingBy: 1.0)
+        let location = NSNumber(value: Float(percent))
+        
+        let rightIndex = Int(ratio)
+        let leftIndex = Int(ratio-1)
+        
+        if leftIndex >= 0 {
+            segmentButtons[leftIndex].setGradientLevelLocations(locations: [location, location, 1.0, 1.0])
+        }
+        if rightIndex < segmentButtons.count {
+            segmentButtons[rightIndex].setGradientLevelLocations(locations: [0, 0, location, location])
+        }
+    }
+    
+    ///Call from connected scrollview's scrollViewDidScroll method to continuously update underline's x position and colors
+    ///- parameter xPosition: scrollView.contentOffset.x
+    ///- parameter frameWidth: self.frame.width
+    func updateSegmentSelectionInteractive(with xPosition: CGFloat, frameWidth: CGFloat) {
+        self.updateUnderline(with: xPosition)
+        self.updateGradientLocations(with: xPosition, frameWidth: frameWidth)
     }
     
     ///Can Call from connected scrollview's scrollViewDidEndDecelerating method to update segment selection UI
     ///- parameter index: Int(scrollView.contentOffset.x / self.frame.width)
     func updateSegmentSelection(with index: Int) {
-//        segmentButtons[selectedSegmentIndex].configuration?.attributedTitle?.foregroundColor = options.segmentTitleColor
         selectedSegmentIndex = index
-//
-//        segmentButtons[selectedSegmentIndex].configuration?.attributedTitle?.foregroundColor = options.selectedSegmentTitleColor
         underlineSelector.frame.origin.x = segmentButtons[selectedSegmentIndex].frame.origin.x
     }
 }
