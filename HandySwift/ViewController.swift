@@ -10,8 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var underlineSegmentedControl: UnderlineSegmentedControl = {
-        let control = UnderlineSegmentedControl(with: ["First", "Second"])
+        let control = UnderlineSegmentedControl(with: ["First", "Second", "Third", "Fourth"])
         control.addTarget(self, action: #selector(segmentSelected(_:)), for: .valueChanged)
+        control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
     
@@ -40,11 +41,11 @@ class ViewController: UIViewController {
     }
 
     func configureScrollView() {
-        scrollView.contentSize = CGSize(width: view.frame.size.width*2, height: scrollView.frame.size.height)
+        scrollView.contentSize = CGSize(width: view.frame.size.width*4, height: scrollView.frame.size.height)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
-        let colors: [UIColor] = [.yellow, .green]
-        for x in 0..<2 {
+        let colors: [UIColor] = [.yellow, .green, .cyan, .purple]
+        for x in 0..<4 {
             let page = UIView(frame: CGRect(x: CGFloat(x) * view.frame.size.width, y: 0, width: view.frame.size.width, height: scrollView.frame.size.height))
             page.backgroundColor = colors[x]
             contentView.addSubview(page)
@@ -92,9 +93,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        underlineSegmentedControl.updateUnderline(with: scrollView.contentOffset.x)
-        
-        underlineSegmentedControl.updateGradientLocations(with: scrollView.contentOffset.x, frameWidth: scrollView.frame.width)
+        underlineSegmentedControl.updateSegmentSelectionInteractive(with: scrollView.contentOffset.x, frameWidth: scrollView.frame.width)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
