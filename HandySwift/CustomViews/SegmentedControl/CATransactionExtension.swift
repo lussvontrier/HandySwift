@@ -8,6 +8,7 @@
 import QuartzCore
 
 extension CATransaction {
+    ///Disables system animations that are enabled on layers by default
     static func disableAnimations(_ completion: () -> Void) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)

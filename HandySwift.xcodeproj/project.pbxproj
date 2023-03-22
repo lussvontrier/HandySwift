@@ -23,6 +23,12 @@
 		0625A2672874F2910079B20C /* UserDefaults+HandySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A2662874F2910079B20C /* UserDefaults+HandySwift.swift */; };
 		0625A26A2874F2E80079B20C /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A2692874F2E80079B20C /* UserDefault.swift */; };
 		0625A26C2874F4700079B20C /* Optional+HandySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A26B2874F4700079B20C /* Optional+HandySwift.swift */; };
+		062A0D3A299247570057A86B /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D39299247570057A86B /* APIRouter.swift */; };
+		062A0D3C299247C70057A86B /* APIRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D3B299247C70057A86B /* APIRequestDispatcher.swift */; };
+		062A0D3E299249760057A86B /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D3D299249760057A86B /* APIRequestError.swift */; };
+		062A0D4029924AD90057A86B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D3F29924AD90057A86B /* Models.swift */; };
+		062A0D4229924B030057A86B /* APIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D4129924B030057A86B /* APIClients.swift */; };
+		06C1C515296EE9DD0002BD30 /* String+HandySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1C514296EE9DD0002BD30 /* String+HandySwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		0625A2662874F2910079B20C /* UserDefaults+HandySwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+HandySwift.swift"; sourceTree = "<group>"; };
 		0625A2692874F2E80079B20C /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		0625A26B2874F4700079B20C /* Optional+HandySwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+HandySwift.swift"; sourceTree = "<group>"; };
+		062A0D39299247570057A86B /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		062A0D3B299247C70057A86B /* APIRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestDispatcher.swift; sourceTree = "<group>"; };
+		062A0D3D299249760057A86B /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
+		062A0D3F29924AD90057A86B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		062A0D4129924B030057A86B /* APIClients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClients.swift; sourceTree = "<group>"; };
+		06C1C514296EE9DD0002BD30 /* String+HandySwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HandySwift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,7 @@
 		0625A24C286F6DD60079B20C /* HandySwift */ = {
 			isa = PBXGroup;
 			children = (
+				06C1C511296EE1E40002BD30 /* Networking */,
 				0608219E2901C829008077B0 /* CustomViews */,
 				0625A2682874F2D40079B20C /* PropertyWrappers */,
 				0625A261286F6DE30079B20C /* Extensions */,
@@ -117,6 +130,7 @@
 				0625A2642874CFB90079B20C /* CollectionView+HandySwift.swift */,
 				0625A2662874F2910079B20C /* UserDefaults+HandySwift.swift */,
 				0625A26B2874F4700079B20C /* Optional+HandySwift.swift */,
+				06C1C514296EE9DD0002BD30 /* String+HandySwift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +141,18 @@
 				0625A2692874F2E80079B20C /* UserDefault.swift */,
 			);
 			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		06C1C511296EE1E40002BD30 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				062A0D39299247570057A86B /* APIRouter.swift */,
+				062A0D3B299247C70057A86B /* APIRequestDispatcher.swift */,
+				062A0D3D299249760057A86B /* APIRequestError.swift */,
+				062A0D3F29924AD90057A86B /* Models.swift */,
+				062A0D4129924B030057A86B /* APIClients.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,16 +226,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				062A0D3C299247C70057A86B /* APIRequestDispatcher.swift in Sources */,
 				0625A263286F6DFF0079B20C /* TableView+HandySwift.swift in Sources */,
 				060821A02901C842008077B0 /* UnderlineSegmentedControl.swift in Sources */,
 				0625A26A2874F2E80079B20C /* UserDefault.swift in Sources */,
 				0625A252286F6DD60079B20C /* ViewController.swift in Sources */,
+				062A0D3A299247570057A86B /* APIRouter.swift in Sources */,
+				062A0D4229924B030057A86B /* APIClients.swift in Sources */,
 				060821A429033BB4008077B0 /* GradientButton.swift in Sources */,
 				0625A24E286F6DD60079B20C /* AppDelegate.swift in Sources */,
 				0625A250286F6DD60079B20C /* SceneDelegate.swift in Sources */,
 				0625A2652874CFB90079B20C /* CollectionView+HandySwift.swift in Sources */,
+				062A0D3E299249760057A86B /* APIRequestError.swift in Sources */,
+				06C1C515296EE9DD0002BD30 /* String+HandySwift.swift in Sources */,
 				060821AC2911C393008077B0 /* UnderlineSegmentedControlOptions.swift in Sources */,
 				060821A22901C901008077B0 /* ViewFactory.swift in Sources */,
+				062A0D4029924AD90057A86B /* Models.swift in Sources */,
 				0625A26C2874F4700079B20C /* Optional+HandySwift.swift in Sources */,
 				060821AA290DD03C008077B0 /* CATransactionExtension.swift in Sources */,
 				0625A2672874F2910079B20C /* UserDefaults+HandySwift.swift in Sources */,
@@ -360,6 +392,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7LX25BCPB6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HandySwift",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HandySwift/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -388,6 +424,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7LX25BCPB6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HandySwift",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HandySwift/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
