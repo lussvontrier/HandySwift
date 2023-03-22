@@ -7,6 +7,7 @@
 
 import UIKit
 
+///A ViewController to test
 class ViewController: UIViewController {
     
     private lazy var underlineSegmentedControl: UnderlineSegmentedControl = {
