@@ -12,6 +12,7 @@
 		060821A429033BB4008077B0 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821A329033BB4008077B0 /* GradientButton.swift */; };
 		060821AA290DD03C008077B0 /* CATransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821A9290DD03C008077B0 /* CATransactionExtension.swift */; };
 		060821AC2911C393008077B0 /* UnderlineSegmentedControlOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060821AB2911C393008077B0 /* UnderlineSegmentedControlOptions.swift */; };
+		061B14F22A41D9A90088E466 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061B14F12A41D9A90088E466 /* Observable.swift */; };
 		0625A24E286F6DD60079B20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A24D286F6DD60079B20C /* AppDelegate.swift */; };
 		0625A250286F6DD60079B20C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A24F286F6DD60079B20C /* SceneDelegate.swift */; };
 		0625A252286F6DD60079B20C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625A251286F6DD60079B20C /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		062A0D3E299249760057A86B /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D3D299249760057A86B /* APIRequestError.swift */; };
 		062A0D4029924AD90057A86B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D3F29924AD90057A86B /* Models.swift */; };
 		062A0D4229924B030057A86B /* APIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062A0D4129924B030057A86B /* APIClients.swift */; };
+		068B65122A11828F00EF4FED /* SafeThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B65112A11828F00EF4FED /* SafeThread.swift */; };
 		06C1C515296EE9DD0002BD30 /* String+HandySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1C514296EE9DD0002BD30 /* String+HandySwift.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,7 @@
 		060821A329033BB4008077B0 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		060821A9290DD03C008077B0 /* CATransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATransactionExtension.swift; sourceTree = "<group>"; };
 		060821AB2911C393008077B0 /* UnderlineSegmentedControlOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControlOptions.swift; sourceTree = "<group>"; };
+		061B14F12A41D9A90088E466 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		0625A24A286F6DD60079B20C /* HandySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0625A24D286F6DD60079B20C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0625A24F286F6DD60079B20C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		062A0D3D299249760057A86B /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
 		062A0D3F29924AD90057A86B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		062A0D4129924B030057A86B /* APIClients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClients.swift; sourceTree = "<group>"; };
+		068B65112A11828F00EF4FED /* SafeThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeThread.swift; sourceTree = "<group>"; };
 		06C1C514296EE9DD0002BD30 /* String+HandySwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HandySwift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,14 @@
 			path = SegmentedControl;
 			sourceTree = "<group>";
 		};
+		061B14F02A41D99B0088E466 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				061B14F12A41D9A90088E466 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 		0625A241286F6DD60079B20C = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +120,8 @@
 		0625A24C286F6DD60079B20C /* HandySwift */ = {
 			isa = PBXGroup;
 			children = (
+				061B14F02A41D99B0088E466 /* Observable */,
+				068B65102A11826200EF4FED /* Threads */,
 				06C1C511296EE1E40002BD30 /* Networking */,
 				0608219E2901C829008077B0 /* CustomViews */,
 				0625A2682874F2D40079B20C /* PropertyWrappers */,
@@ -141,6 +155,14 @@
 				0625A2692874F2E80079B20C /* UserDefault.swift */,
 			);
 			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		068B65102A11826200EF4FED /* Threads */ = {
+			isa = PBXGroup;
+			children = (
+				068B65112A11828F00EF4FED /* SafeThread.swift */,
+			);
+			path = Threads;
 			sourceTree = "<group>";
 		};
 		06C1C511296EE1E40002BD30 /* Networking */ = {
@@ -236,6 +258,8 @@
 				060821A429033BB4008077B0 /* GradientButton.swift in Sources */,
 				0625A24E286F6DD60079B20C /* AppDelegate.swift in Sources */,
 				0625A250286F6DD60079B20C /* SceneDelegate.swift in Sources */,
+				061B14F22A41D9A90088E466 /* Observable.swift in Sources */,
+				068B65122A11828F00EF4FED /* SafeThread.swift in Sources */,
 				0625A2652874CFB90079B20C /* CollectionView+HandySwift.swift in Sources */,
 				062A0D3E299249760057A86B /* APIRequestError.swift in Sources */,
 				06C1C515296EE9DD0002BD30 /* String+HandySwift.swift in Sources */,
